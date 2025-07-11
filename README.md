@@ -1,1 +1,1 @@
-# baseball_database_projcet
+# baseball_database_project
