@@ -1,1 +1,1 @@
-# baseball_database_project
+# Identifying Baseball Players Skilled in Hitting, Power, and Speed
