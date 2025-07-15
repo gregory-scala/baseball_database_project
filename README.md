@@ -6,6 +6,6 @@ I use batting average to measure a baseball player's skill in hitting, slugging 
 
 To accomplish this project, I make use of three views in sequence.
 1. **playernameview.sql**
-  - This view creates a table that links a baseball player's playerID to their name.
+    - This view creates a table that links a baseball player's playerID to their name.
 2. **building_yearly_position_indicator.sql**
     - This view 
