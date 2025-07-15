@@ -1,11 +1,14 @@
-/*Creating a view that Gets yearly offensive stats for players since 1901 by team and positoin.*/
+/*Creating a view that gets yearly offensive stats for players since 1901*/
 
 IF OBJECT_ID('dbo.vw_YearlyBattingStats', 'V') IS NOT NULL
     DROP VIEW dbo.vw_YearlyBattingStats;
 GO
+/* Account for that some players play in multiple teams during a given season */
 
 CREATE VIEW dbo.vw_YearlyBattingStats AS
 
+
+/* Use two ctes to identify players that play for multiple teams per season */
 WITH DUPLICATES_TABLE AS (
 SELECT
 	b.playerID,
@@ -38,7 +41,7 @@ ON
 	dt.playerID = b.playerID AND dt.yearID = b.yearID
 ),
 
-/* Sum the numbers for players that play for multiple teams in a season */
+/* Aggreating statistics by player and year, and getting the team ID */
 RAW_NUMBERS AS (
 SELECT
 	position.Name,
@@ -110,7 +113,7 @@ ON
 	s.playerID = b.playerID AND s.yearID = b.yearID
 ),
 
-/*Creating OPS */
+/*Creating OPS (On Base Plus Slugging) */
 OPS_Stats AS (
 SELECT
 	b.playerID,
